@@ -3,12 +3,12 @@ import React from "react";
 import ReactStars from "react-rating-stars-component";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ imageUrl, title, rating, price,id }) => {
+const ProductCard = ({ imageUrl, title, rating, price, id }) => {
   const navigate = useNavigate();
 
   return (
     <div
-      onClick={()=>navigate(`/details/${id}`)}
+      onClick={() => navigate(`/details/${id}`)}
       className="border shadow-md flex flex-col justify-between p-5"
     >
       <img src={imageUrl} alt={title} className="product-image" />
@@ -21,7 +21,7 @@ const ProductCard = ({ imageUrl, title, rating, price,id }) => {
             size={24}
             activeColor="#ff7b00ef"
             edit={false}
-          />{" "}
+          />
           <div className="flex flex-col justify-center ml-2 text-gray-400 text-sm font-medium">
             {" "}
             ({rating})
