@@ -1,3 +1,13 @@
+
+# list of technology
+            ▪ HTML 
+            ▪ CSS
+            ▪ Tailwind (3.4.3)
+            ▪ Node js (20.5.1)
+            ▪ React (18.3.1)
+            ▪ React Router Dom (6.23.1)
+            ▪ React-rating-stars-component (2.2.0)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
