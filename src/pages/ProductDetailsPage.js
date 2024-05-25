@@ -8,7 +8,9 @@ const ProductDetailsPage = () => {
   return (
     <div>
       <Navbar title="Product Details" />
+      {/* product details  */}
       <ProductDetails />
+      {/* all product  */}
       <AllProducts/>
       <Footer />
     </div>

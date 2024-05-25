@@ -5,6 +5,7 @@ import ReactStars from "react-rating-stars-component";
 const ProductDetails = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
+  const [rating, setRating] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,21 +15,23 @@ const ProductDetails = () => {
         }
         const result = await response.json();
         setProductDetails(result);
+        setRating(result?.rating);
       } catch (error) {
       } finally {
       }
     };
 
     fetchData();
-  }, []);
+  }, [rating]);
+  console.log(rating);
   return (
-    <div className="flex flex-col mx-auto container p-2">
+    <div className="flex flex-col mx-auto container">
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 border-8 border-blue-500 mt-5">
         <div className="mt-8 border-blue-400 border-4 border-dotted border-l-0 mr-5 mb-16">
           <img className="w-[80%]" src={productDetails?.thumbnail} />
           <div className="grid grid-cols-5 gap-5 border pt-5">
             {productDetails?.images?.map((image) => (
-              <div className="border shadow-sm">
+              <div key={image} className="border shadow-sm">
                 <img className="" src={image} />
               </div>
             ))}
@@ -37,13 +40,15 @@ const ProductDetails = () => {
         <div>
           <div className="flex flex-col border-blue-400 border-4 border-r-0 border-dotted mt-8 p-1">
             <div className="flex">
-              <ReactStars
-                count={5}
-                value={productDetails?.rating}
-                size={24}
-                activeColor="#ff7b00ef"
-                edit={false}
-              />
+              {rating && (
+                <ReactStars
+                  count={5}
+                  value={rating}
+                  size={24}
+                  activeColor="#ff7b00ef"
+                  edit={false}
+                />
+              )}
               <div className="flex flex-col justify-center ml-2 text-gray-700 text-sm font-medium">
                 {" "}
                 {productDetails?.rating} star Rating
@@ -72,8 +77,8 @@ const ProductDetails = () => {
       <div className="border mt-5">
         <h2 className="border p-5 text-2xl font-medium">Product Description</h2>
         <div className="p-8">
-            <h2 className="text-xl font-medium mb-4">Description</h2>
-            <p className="text-gray-600">{productDetails?.description}</p>
+          <h2 className="text-xl font-medium mb-4">Description</h2>
+          <p className="text-gray-600">{productDetails?.description}</p>
         </div>
       </div>
     </div>

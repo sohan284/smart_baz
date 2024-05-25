@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
+    const navigate = useNavigate()
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -18,12 +20,15 @@ const AllProducts = () => {
 
     fetchData();
   }, []);
+  const handleNavigate = (id) =>{
+    window.open(`/details/${id}`)
+  }
   return (
-    <div className="mt-20 p-2 flex container mx-auto text-xl font-medium flex-col">
+    <div className="mt-20 flex container mx-auto text-xl font-medium flex-col">
       <h1 className="uppercase mb-3">All Product</h1>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5">
         {products?.map((product) => (
-          <div key={product?.id}>
+          <div onClick={()=>handleNavigate(product?.id)} key={product?.id}>
             <div className="flex border p-3">
                 <img className="w-24 mr-5" src={product?.thumbnail}/>
                 <div>

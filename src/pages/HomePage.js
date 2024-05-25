@@ -19,6 +19,7 @@ const HomePage = () => {
           <ProductGroups />
         </div>
       </div>
+      {/* footer  */}
       <Footer/>
     </div>
   );
